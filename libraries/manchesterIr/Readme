@@ -1,0 +1,7 @@
+The ManchesterIR library is a cross between:
+https://github.com/mchr3k/arduino-libs-manchester
+
+and:
+https://github.com/z3t0/Arduino-IRremote
+
+Which allows manchester encoded data to be sent using a 38khz carrier.
