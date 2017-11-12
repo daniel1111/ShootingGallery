@@ -51,12 +51,17 @@ gun _guns[GUN_COUNT];
 
 #define GUN_1 1 
 #define GUN_1_LED 7
+
+#define RELAY_PIN 2
+
  
 
 void setup() 
 {
   pinMode(GUN_1_LED, OUTPUT);  
   digitalWrite(GUN_1_LED, LOW);
+  pinMode(RELAY_PIN, OUTPUT);
+  digitalWrite(RELAY_PIN, LOW);
   
   
   memset(_guns, 0, sizeof(_guns));
@@ -114,6 +119,7 @@ void target_hit(uint8_t gun_id)
   
   digitalWrite(_guns[gun_id].pin, HIGH);
   myservo.write(90);
+  digitalWrite(RELAY_PIN, HIGH);
   _guns[gun_id].state = HIGH;  
 }
 
@@ -128,6 +134,7 @@ void target_loop()
       {
          digitalWrite(_guns[gun_id].pin, LOW);
          myservo.write(0);
+         digitalWrite(RELAY_PIN, LOW);
          _guns[gun_id].state = LOW;
       }
     }
